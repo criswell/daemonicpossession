@@ -192,6 +192,12 @@ int main(int argc, char *argv[])
         logger.BeginLogging();
         logger.LogEntry("Starting activity");
 
+        // TODO - Insert your activity here
+
+        /*
+         * TODO - Perhaps 30 seconds isn't what you want to sleep for,
+         * adjust according to your needs.
+         */
         logger.LogEntry("Sleeping for 30 seconds");
         logger.EndLogging();
         sleep(30);
