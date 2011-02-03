@@ -2,7 +2,9 @@
                         Sam Hart, 2010, 2011
 ----------------------------------------------------------------------------
 1) Introduction
-
+    1.a) Common themes
+2) The Daemon Patterns
+    2.a) A simple loop daemon
 ----------------------------------------------------------------------------
 
 1) Introduction
@@ -10,3 +12,12 @@
     This project includes several stubbed out samples of basic Linux daemon
 patterns. They are intended to be instructional/educational, and are released
 under a permissive license in the hopes that others might find them useful.
+
+1.a) Common themes
+
+2) The Daemon Patterns
+
+2.a) A simple loop daemon
+
+    One of the most widely used daemon patterns in use is the "simple loop
+daemon". It can be found in "simple_loop/".
