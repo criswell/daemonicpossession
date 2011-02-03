@@ -94,10 +94,6 @@ int main(int argc, char *argv[])
     #endif
     FILE *filePipe;
 
-    // We assume an upper limit of 256 characters for full path plus
-    // filename, perhaps this is bad?
-    char logFile[256];
-
     // The PID related variables
     // Just like the logFile, we assume an upper limit of 256 characters for
     // full path plus filename, could be bad?
@@ -123,9 +119,9 @@ int main(int argc, char *argv[])
     umask(0);
 
     #ifndef DEBUG
-    //Logger logger(logFile);
+    Logger logger(logFile);
     #else
-    //Logger logger(stdout);
+    Logger logger(stdout);
     #endif
 
     logger.BeginLogging();
@@ -187,7 +183,7 @@ int main(int argc, char *argv[])
         // We have time, let's do this right
         // TODO cleanup
         logger.EndLogging();
-        //logger.~Logger();
+        logger.~Logger();
     }
 
     unlink(pidFile);
