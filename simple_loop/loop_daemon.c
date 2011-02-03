@@ -26,13 +26,11 @@
  *
  */
 
-//#include <stdio.h>
-//#include <unistd.h>
-//#include <stdlib.h>
-//#include <sys/types.h>
-//#include <sys/stat.h>
-//#include <signal.h>
-//#include <strings.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <signal.h>
 
 /* These can be defined here, or generated programatically, your choice.
  * For demonstration purposes, however, we just define them here and call it
