@@ -13,6 +13,13 @@
 //#include <signal.h>
 //#include <strings.h>
 
+/* These can be defined here, or generated programatically, your choice.
+ * For demonstration purposes, however, we just define them here and call it
+ * good.
+ */
+#define LOGFILE "/var/log/loop_daemon.log"
+#define PIDFILE "/var/run/loop_daemon.pid"
+
 //! Debugging toggle- Enable to force not to run as daemon
 //#define DEBUG
 
@@ -94,10 +101,7 @@ int main(int argc, char *argv[])
     #endif
     FILE *filePipe;
 
-    // The PID related variables
-    // Just like the logFile, we assume an upper limit of 256 characters for
-    // full path plus filename, could be bad?
-    char pidFile[256];
+    // The PID related variable
     char pidOut[256];
 
     #ifndef DEBUG
@@ -119,7 +123,7 @@ int main(int argc, char *argv[])
     umask(0);
 
     #ifndef DEBUG
-    Logger logger(logFile);
+    Logger logger(LOGFILE);
     #else
     Logger logger(stdout);
     #endif
@@ -138,7 +142,7 @@ int main(int argc, char *argv[])
     }
 
     logger.QuickLog("New Session ID obtained");
-    if ( !(filePipe = (FILE*)fopen(pidFile, "w")) )
+    if ( !(filePipe = (FILE*)fopen(PIDFILE, "w")) )
     {
         perror("Problems opening PID file for writing!");
         return false;
@@ -186,5 +190,5 @@ int main(int argc, char *argv[])
         logger.~Logger();
     }
 
-    unlink(pidFile);
+    unlink(PIDFILE);
 }
