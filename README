@@ -13,7 +13,22 @@
 patterns. They are intended to be instructional/educational, and are released
 under a permissive license in the hopes that others might find them useful.
 
+    While I might be fairly specific in my examples and utilize code which is
+designed to run under Linux, chances are the daemon code found herein will run
+on under Unix variants as well (usually with little, if any, modification).
+
+    The code found here is the result of work spanning several projects, jobs
+and needs. Some of it may date back to early 2003. The purpose of this specific
+source repository is to finally, after so many years of scattering this code
+all over the place, collect it all in one place so it can serve a useful
+purpose.
+
 1.a) Common themes
+
+    There are a number of common themes used through-out these daemon patterns.
+I do not claim original ownership nor copyright on them as most are older than
+Linux itself. A simple web search is likely to reveal multiple examples of
+these themes engineered in numerous ways.
 
 2) The Daemon Patterns
 
