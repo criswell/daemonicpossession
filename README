@@ -1,9 +1,12 @@
-=====================
- Daemonic Possession
-=====================
-:Author: Sam Hart
+                         Daemonic Possession
+                        Sam Hart, 2010, 2011
+----------------------------------------------------------------------------
+1) Introduction
 
-.. contents::
+----------------------------------------------------------------------------
 
-Introduction
-------------
+1) Introduction
+
+    This project includes several stubbed out samples of basic Linux daemon
+patterns. They are intended to be instructional/educational, and are released
+under a permissive license in the hopes that others might find them useful.
