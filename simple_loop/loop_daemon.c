@@ -168,7 +168,8 @@ int main(int argc, char *argv[])
     pclose(filePipe);
     #endif
 
-    // TODO - Change to working directory
+    // Change to working directory
+    chdir("/");
 
     #ifndef DEBUG
     // File descriptors are a security hazard in a daemon
