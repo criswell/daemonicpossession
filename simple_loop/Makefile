@@ -23,9 +23,10 @@ debug: $(SOURCES) $(HEADERS)
 	$(CPP) $(DEBUG) $(CP_FLAGS) $(INCLUDES) $(SOURCES)
 	$(CPP) $(OBJECTS) $(CP_LDFLAGS) -o loop_daemon
 
-static-debug: $(OBJECTS)
+static-debug: $(SOURCES) $(HEADERS)
 	@echo !! Debug with static linking enabled !!
-	$(CPP) $(STATIC_BASE) $(STATIC_CC) $(OBJECTS) $(DEBUG) \
+	$(CPP) $(DEBUG) $(CP_FLAGS) $(INCLUDES) $(SOURCES)
+	$(CPP) $(STATIC_BASE) $(STATIC_CC) $(OBJECTS) \
 		$(CP_LDFLAGS) -o loop_daemon
 
 logger.o: loop_daemon.o
