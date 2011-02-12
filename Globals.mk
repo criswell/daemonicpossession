@@ -1,6 +1,6 @@
 # Global makefile settings
 
-DEBUG=-g -D 'DEBUG'
+DEBUG=-g -D DAEMONIC_DEBUG
 
 CC=gcc
 CPP=g++

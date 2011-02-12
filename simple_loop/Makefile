@@ -18,9 +18,10 @@ static: $(OBJECTS)
 	$(CPP) $(STATIC_BASE) $(STATIC_CC) $(OBJECTS) \
 		$(CP_LDFLAGS) -o loop_daemon
 
-debug: $(OBJECTS)
+debug: $(SOURCES) $(HEADERS)
 	@echo !! Debug build enabled !!
-	$(CPP) $(OBJECTS) $(DEBUG) $(CP_LDFLAGS) -o loop_daemon
+	$(CPP) $(DEBUG) $(CP_FLAGS) $(INCLUDES) $(SOURCES)
+	$(CPP) $(OBJECTS) $(CP_LDFLAGS) -o loop_daemon
 
 static-debug: $(OBJECTS)
 	@echo !! Debug with static linking enabled !!

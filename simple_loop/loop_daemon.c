@@ -112,17 +112,15 @@ void setupSignalHandlers()
 int main(int argc, char *argv[])
 {
     // Misc variables to be used by the daemon
-    #ifndef DEBUG
+    #ifndef DAEMONIC_DEBUG
     pid_t pid, sid;
-    #endif
     FILE *filePipe;
 
     // The PID related variable
     char pidOut[256];
 
-    #ifndef DEBUG
     // Obtain the PID file
-    // FIXME
+    // FIXME - If we obtain the PID externally, do it here
 
     // Since we're a daemon, let's start by forking from parent
     pid = fork();
@@ -138,7 +136,7 @@ int main(int argc, char *argv[])
     // File mode mask so we can have full access
     umask(0);
 
-    #ifndef DEBUG
+    #ifndef DAEMONIC_DEBUG
     Logger logger("loop_daemon", LOGFILE);
     #else
     Logger logger(stdout);
@@ -148,7 +146,7 @@ int main(int argc, char *argv[])
     logger.LogEntry("------> loop_daemon started....");
     logger.EndLogging();
 
-    #ifndef DEBUG
+    #ifndef DAEMONIC_DEBUG
     // Obtain a new session ID for child process
     sid = setsid();
     if (sid < 0) {
@@ -171,7 +169,7 @@ int main(int argc, char *argv[])
     // Change to working directory
     chdir("/");
 
-    #ifndef DEBUG
+    #ifndef DAEMONIC_DEBUG
     // File descriptors are a security hazard in a daemon
     close(STDIN_FILENO);
     close(STDOUT_FILENO);
