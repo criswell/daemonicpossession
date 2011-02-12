@@ -28,6 +28,16 @@
  * To invoke this logger class in this way, you must call
  * Logger::Logger(char *logFile).
  *
+ * \subsection pipe_log Named pipe logging
+ *
+ * In this alternative way of invoking the logger class, we instead opt to
+ * send all logging to a specific file pipe. This is generally used when we are
+ * running our daemon in a debug mode and wish to send logging information to
+ * STDOUT.
+ *
+ * When called this way, the syslog logging is disabled.
+ *
+ * To invoke this logger class in this way, you must call Logger::Logger(FILE *altPipe).
  */
 
 #ifndef logger_H
