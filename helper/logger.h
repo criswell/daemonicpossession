@@ -80,6 +80,18 @@ class Logger
         //! Destructor for the Logger
         ~Logger();
 
+        //! Set the priority for syslog
+        /*!
+         * This sets the priority for future syslog calls. Rather than doing
+         * priority changes on each call to log entries, we just set them
+         * periodically as needed.
+         *
+         * \note The default priority for this logging class will be \b LOG_INFO
+         *
+         * \param priority Bitwise ORed syslog priority level
+         */
+        void SetPriority(int priority);
+
         //! Begin a logging session
         /*!
          * Call this when you are ready to begin logging. The logger

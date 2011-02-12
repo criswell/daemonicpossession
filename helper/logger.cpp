@@ -67,6 +67,11 @@ Logger::~Logger()
     }
 }
 
+void Logger::SetPriority(int priority)
+{
+    syslogPriority = priority;
+}
+
 bool Logger::BeginLogging()
 {
     if(useAltPipe) {
