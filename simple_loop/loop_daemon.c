@@ -145,7 +145,7 @@ int main(int argc, char *argv[])
     #endif
 
     logger.BeginLogging();
-    logger.LogEntry("-----------------------------------");
+    logger.LogEntry("------> loop_daemon started....");
     logger.EndLogging();
 
     #ifndef DEBUG
