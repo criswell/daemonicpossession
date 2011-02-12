@@ -28,7 +28,6 @@
  * To invoke this logger class in this way, you must call
  * Logger::Logger(char *logFile).
  *
-
  */
 
 #ifndef logger_H
@@ -36,6 +35,7 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <syslog.h>
 
 // Constants
 
@@ -50,6 +50,8 @@ class Logger
         char *logFilename;
         bool isLogging;
         bool useAltPipe;
+        bool useSyslog;
+        int syslogPriority;
         FILE *logPipe;
         char logLine[LOG_LINE_LENGTH];
         char tempLine[TEMP_LINE_LENGTH];
@@ -62,9 +64,10 @@ class Logger
     public:
         //! Constructor for the Logger
         /*!
+         *  \param ident is the application identifier, used by syslog to prepend each log message
          *  \param logFile is a character string which details the path to the log file
          */
-        Logger(char *logFile);
+        Logger(const char *ident, char *logFile);
 
         //! Alternative constructor which forces the use of a specific pipe
         /*!

@@ -33,10 +33,13 @@
 
 #include "logger.h"
 
-Logger::Logger(char *logFile)
+Logger::Logger(const char *ident, char *logFile)
 {
     logFilename = logFile;
+    openlog(ident, LOG_PID | LOG_CONS | LOG_NOWAIT, LOG_DAEMON);
 
+    useSyslog = true;
+    syslogPriority = LOG_INFO;
     isLogging = false;
     useAltPipe = false;
 }
@@ -46,6 +49,12 @@ Logger::Logger(FILE *altPipe)
     logPipe = altPipe;
     useAltPipe = true;
     isLogging = true;
+    /*
+    If we are called with an alternative pipe, we assume no syslog services are
+    needed or wanted.
+    */
+    useSyslog = false;
+    syslogPriority = LOG_INFO; // Don't need it, but may as well set it
 }
 
 Logger::~Logger()
