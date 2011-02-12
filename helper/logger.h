@@ -8,10 +8,27 @@
  *
  * This is the class which handles the logging
  *
- * \section TODO_sec TODO
+ * \section det_sec Details
  *
- * It might be nice to also utilize syslog calls so we can integrate with
- * whatever solution might be used for system monitoring.
+ * This logging class is intended to provide an abstracted interface which
+ * wraps multiple ways to log to system files. It can be used in one of two
+ * ways:
+ *
+ * \subsection dual_log Dual system and private logging
+ *
+ * This is the standard way to invoke and create the logging class instance.
+ * When created this way, the class instance will log to a specified file
+ * (a private log) as well as to syslog. This allows for a private log which
+ * can be retained, moved, etc. and which \b only contains the log details for
+ * this daemon. But at the same time, we will also be logging to a system-wide
+ * log which will allow for external monitoring software which may be
+ * aggregating data across multple systems to collect the log information from
+ * our daemon.
+ *
+ * To invoke this logger class in this way, you must call
+ * Logger::Logger(char *logFile).
+ *
+
  */
 
 #ifndef logger_H
