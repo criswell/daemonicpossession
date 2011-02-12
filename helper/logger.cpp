@@ -61,8 +61,9 @@ Logger::~Logger()
 {
     if(isLogging)
     {
-        // TODO close out logging
         EndLogging();
+        if(useSyslog)
+            closelog();
     }
 }
 
@@ -134,6 +135,10 @@ bool Logger::LogEntry(char *text, ...)
         }
         va_end(argp);
 
+        // First, syslog (which is a 'fire-n-forget' op)
+        if(useSyslog)
+            syslog(syslogPriority, "%s", tempLine);
+
         if( !(snprintf(
             logLine, LOG_LINE_LENGTH,
             "%s : %s\n", timeStamp, tempLine)) )
@@ -171,6 +176,10 @@ void Logger::QuickLog(char *text, ...)
         }
         va_end(argp);
 
+        // First, syslog (which is a 'fire-n-forget' op)
+        if(useSyslog)
+            syslog(syslogPriority, "%s", tempLine);
+
         if( !(snprintf(
             logLine, LOG_LINE_LENGTH,
             "%s : %s\n", timeStamp, tempLine)) )
@@ -197,6 +206,10 @@ void Logger::QuickLog(char *text, ...)
             perror(text);
         }
         va_end(argp);
+
+        // First, syslog (which is a 'fire-n-forget' op)
+        if(useSyslog)
+            syslog(syslogPriority, "%s", tempLine);
 
         if( !(snprintf(
             logLine, LOG_LINE_LENGTH,
