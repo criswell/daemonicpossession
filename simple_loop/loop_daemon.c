@@ -139,7 +139,7 @@ int main(int argc, char *argv[])
     umask(0);
 
     #ifndef DEBUG
-    Logger logger(LOGFILE);
+    Logger logger("loop_daemon", LOGFILE);
     #else
     Logger logger(stdout);
     #endif
