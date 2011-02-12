@@ -3,6 +3,7 @@
 ----------------------------------------------------------------------------
 1) Introduction
     1.a) Common themes
+    1.b) The general logging class
 2) The Daemon Patterns
     2.a) A simple loop daemon
 ----------------------------------------------------------------------------
@@ -29,6 +30,18 @@ purpose.
 I do not claim original ownership nor copyright on them as most are older than
 Linux itself. A simple web search is likely to reveal multiple examples of
 these themes engineered in numerous ways.
+
+1.b) The general logging class
+
+    Included in these examples is a generalized logging class. You are free to
+use it or discard it as you see fit.
+
+    The purpose of this generalized logging class is to provide something
+flexible which can do the following:
+
+            1: Tie into standard syslog services
+            2: Log to a custom log file specific to the daemon
+            3: During special debug modes, log to named pipes (such as STDOUT)
 
 2) The Daemon Patterns
 
